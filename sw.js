@@ -1,5 +1,5 @@
 'use strict';
-const CACHE_NAME = 'planner-schedule-memo-wood-v2';
+const CACHE_NAME = 'planner-schedule-memo-wood-v3';
 const APP_FILES = ['./', './index.html', './manifest.webmanifest', './apple-touch-icon.PNG', './icon-512.png'];
 
 self.addEventListener('install', event => {

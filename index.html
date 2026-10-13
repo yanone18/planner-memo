@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#263e62">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="予定表">
+<meta name="apple-mobile-web-app-title" content="予定表メモ">
 <link rel="apple-touch-icon" href="apple-touch-icon.PNG">
 <link rel="manifest" href="./manifest.webmanifest">
-<title>予定表</title>
+<title>予定表メモ</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;color:#243247}
 *{box-sizing:border-box}
@@ -23,7 +23,7 @@ button,input,textarea{font:inherit}
 .tab{flex:1;min-width:0;padding:9px 2px;background:transparent;border:0;border-bottom:2px solid transparent;color:#78879a;font-weight:600;font-size:14px;touch-action:pan-y}
 .tab.active{background:#fff;color:#294f83;border-bottom-color:#3973b5}
 .tab.reorder-source{background:#edf4ff;color:#294f83;border-radius:8px}.tab.reorder-target{outline:2px dashed #8aa8cf;outline-offset:-3px;border-radius:8px}
-.toolbar{flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 12px 5px;background:#fff;min-height:26px}
+.toolbar{flex:none;display:flex;align-items:center;justify-content:flex-end;padding:0 12px 5px;background:#fff;min-height:26px}
 .toolbar span{font-size:11px;color:#758397}
 .menu{border:0;background:transparent;font-size:21px;color:#315f97;padding:0 3px;line-height:1.2}
 .note{flex:none;padding:6px 12px;background:#f7f9fc;font-size:11px;color:#60718a;border-bottom:1px solid #e5ebf2}
@@ -66,7 +66,7 @@ button,input,textarea{font:inherit}
 <body>
 <div class="app">
 <header class="top"><nav class="tabs" id="tabs" aria-label="画面切り替え"></nav></header>
-<div class="toolbar"><span id="status">予定表</span><button class="menu" id="menu" aria-label="メニュー">⋯</button></div>
+<div class="toolbar"><button class="menu" id="menu" aria-label="メニュー">⋯</button></div>
 <main class="sheet" id="sheet"></main>
 <input id="restore-file" type="file" accept=".json,application/json" hidden>
 </div>
@@ -208,7 +208,7 @@ const tabs=()=>{const bar=$('tabs');bar.replaceChildren();state.order.forEach(na
 const switchTo=name=>{if(name===current)return;if(editing&&active)active.blur();editing=false;active=null;scrolls[current]=$('sheet').scrollTop;transitionDirection=state.order.indexOf(name)>state.order.indexOf(current)?1:-1;current=name;render(true)};
 const render=restore=>{
  tabs();const sheet=$('sheet');sheet.replaceChildren();sheet.classList.remove('transition-in-left','transition-in-right');
- $('status').textContent=current;$('today').classList.add('hidden');
+ $('today').classList.add('hidden');
  if(current==='予定表'){
   const start=today(),end=new Date(start.getFullYear()+5,start.getMonth(),start.getDate());let d=new Date(start);
   let shownMonth='';

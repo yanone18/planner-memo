@@ -1,6 +1,6 @@
 {
-  "name": "予定表・メモ",
-  "short_name": "予定表・メモ",
+  "name": "予定表メモ",
+  "short_name": "予定表メモ",
   "lang": "ja",
   "start_url": "./",
   "scope": "./",
